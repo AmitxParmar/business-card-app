@@ -16,11 +16,7 @@ const config = {
         hostname: 'tailwindui.com',
         port: '',
         pathname: '/img/**',
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-      },
+      }
     ],
   },
   /**
