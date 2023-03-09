@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 
 import { api } from "~/utils/api";
 
+import '~/components/BusinessCard/BusinessCard.css'
 import "~/styles/globals.css";
 import Navbar from "~/components/shared/Navbar";
 
