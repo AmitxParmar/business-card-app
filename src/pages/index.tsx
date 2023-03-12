@@ -12,7 +12,7 @@ const Home: NextPage = () => {
     website: "",
   });
 
-
+  const publish = () => console.log('publish')
 
   return (
     <Fragment>
@@ -84,6 +84,7 @@ const Home: NextPage = () => {
             {/* Publish Button */}
             <div className="mt-12 flex justify-center">
               <button
+                onClick={publish}
                 type="button"
                 className="rounded-full bg-black/10 px-10 font-semibold text-white no-underline transition hover:bg-black/20"
               >
