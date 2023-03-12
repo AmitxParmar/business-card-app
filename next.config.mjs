@@ -15,8 +15,17 @@ const config = {
         protocol: 'https',
         hostname: 'tailwindui.com',
         port: '',
-        pathname: '/img/**',
-      }
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.**',
+      },
+
+      {
+        protocol: 'https',
+        hostname: '**.googleapis.**',
+      },
     ],
   },
   /**

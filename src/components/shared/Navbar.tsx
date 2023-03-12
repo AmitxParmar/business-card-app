@@ -1,15 +1,16 @@
-import { FC, Fragment } from 'react'
+import { type FC, Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { HiBookOpen, HiX } from 'react-icons/hi'
 import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
 
-interface NavbarProps {}
+interface NavbarProps { }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const Navbar: FC<NavbarProps> = ({}) => {
+const Navbar: FC<NavbarProps> = ({ }) => {
   const { data: sessionData } = useSession()
 
   return (
@@ -31,15 +32,19 @@ const Navbar: FC<NavbarProps> = ({}) => {
               </div>
               <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
                 <div className='flex flex-shrink-0 items-center'>
-                  <img
+                  <Image
+                    height={34}
+                    width={34}
                     className='block h-8 w-auto lg:hidden'
                     src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
                     alt='Your Company'
                   />
-                  <img
+                  <Image
                     className='hidden h-8 w-auto lg:block'
                     src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
                     alt='Your Company'
+                    height={34}
+                    width={34}
                   />
                 </div>
               </div>
@@ -50,7 +55,11 @@ const Navbar: FC<NavbarProps> = ({}) => {
                     <div>
                       <Menu.Button className='flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                         <span className='sr-only'>Open user menu</span>
-                        <img className='h-8 w-8 rounded-full' src={sessionData.user!.image!} alt='' />
+                        <Image
+                          height={34}
+                          width={34}
+                          className='h-8 w-8 rounded-full'
+                          src={sessionData?.user.image} alt='' />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -94,6 +103,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                                 active ? 'bg-gray-100' : '',
                                 'block w-full px-4 py-2 text-left text-sm text-gray-700'
                               )}
+                              // eslint-disable-next-line @typescript-eslint/no-misused-promises
                               onClick={() => signOut()}>
                               Sign out
                             </button>
