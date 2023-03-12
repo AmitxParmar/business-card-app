@@ -13,11 +13,14 @@ type BusinessCardProps = {
 }
 
 const BusinessCard: FC<BusinessCardProps> = ({ inputs, card }) => {
+
     const { data: sessionData } = useSession();
 
     /* API end points */
-
-
+    const front = card
+        ? `http://localhost:3000/api/og?username=${card.name}&title=${card.title}&imgSrc=${card.imgSrc}`
+        : inputs &&
+        `http://localhost:3000/api/og?username=${sessionData?.user?.name}&title=${inputs.title}&imgSrc=${sessionData?.user?.image}`
 
     return (
         <div className='card'>
@@ -75,7 +78,7 @@ const BusinessCard: FC<BusinessCardProps> = ({ inputs, card }) => {
                 </code>
             </div>
             <div className='card-front'>
-                <Image height={480} width={480} className='h-[30rem] w-[30rem]' src={front} alt={"card front"} />
+                <img height={480} width={480} className='h-[30rem] w-[30rem]' src={front} alt={"card front"} />
             </div>
         </div>
     )

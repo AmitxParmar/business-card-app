@@ -26,6 +26,12 @@ const config = {
         protocol: 'https',
         hostname: '**.googleapis.**',
       },
+      {
+        protocol: 'http',
+        port: '3000',
+        hostname: 'localhost',
+        pathname: "/**"
+      },
     ],
   },
   /**
