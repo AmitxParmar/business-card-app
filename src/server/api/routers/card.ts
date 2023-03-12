@@ -11,19 +11,19 @@ import {
 
 export const cardRouter = createTRPCRouter({
   publishCard: privateProcedure
-    .input(z.object({ text: z.string() }))
+    .input(z.object({ website: z.string(), title: string() }))
     .mutation(async ({ ctx, input }) => {
       const { email, image, name } = ctx.session.user
       const { title, website } = input
 
-      if (!email || !image || !name) throw new TRPCError({ code: "UNAUTHORIZED" })
+      if (!email || !image || !name) throw new TRPCError({ code: 'UNAUTHORIZED' })
 
-      const card = await ctx.prisma.upsert({
+      const card = await ctx.prisma.businessCard.upsert({
         create: {
           title,
           website,
           email,
-          imgSrc,
+          imgSrc: image,
           name,
           slug: slug(name),
         },
@@ -33,17 +33,18 @@ export const cardRouter = createTRPCRouter({
           email,
           imgSrc: image,
           name,
-          slug: slug(name)
+          slug: slug(name),
         },
         where: {
           slug: slug(name),
         },
       })
+
       return card
     }),
 
   getCard: publicProcedure.input(z.object({ slug: z.string() })).query(async ({ ctx, input }) => {
-    const { slug } = input;
+    const { slug } = input
     const card = await ctx.prisma.businessCard.findUnique({
       where: {
         slug,
@@ -51,4 +52,4 @@ export const cardRouter = createTRPCRouter({
     })
     return card
   }),
-});
+})
