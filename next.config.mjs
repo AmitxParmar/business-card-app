@@ -14,8 +14,6 @@ const config = {
       {
         protocol: 'https',
         hostname: 'tailwindui.com',
-        port: '',
-        pathname: '/**',
       },
       {
         protocol: 'https',

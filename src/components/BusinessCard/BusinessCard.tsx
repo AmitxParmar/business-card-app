@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @next/next/no-img-element */
 import { BusinessCard } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 import { type FC } from 'react'
@@ -78,7 +80,7 @@ const BusinessCard: FC<BusinessCardProps> = ({ inputs, card }) => {
                 </code>
             </div>
             <div className='card-front'>
-                <img height={480} width={480} className='h-[30rem] w-[30rem]' src={front} alt={"card front"} />
+                <img height={480} width={480} src={front} alt={"card front"} />
             </div>
         </div>
     )

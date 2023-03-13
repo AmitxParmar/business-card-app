@@ -32,7 +32,6 @@ const Home: NextPage = () => {
           </button>
         )}
 
-
         {/* Main Business card */}
         {sessionData && (
           <Fragment>
